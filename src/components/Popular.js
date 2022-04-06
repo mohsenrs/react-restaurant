@@ -11,16 +11,25 @@ function Popular() {
   }, [])
 
   const fetchApi = async () => {
-    const api = await fetch(
-      `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
-    )
-    const data = await api.json()
-    setPopular(data.recipes)
-    console.log(data.recipes)
+    const check = localStorage.getItem('popular')
+
+    if (check) {
+      setPopular(JSON.parse(check))
+    } else {
+      const api = await fetch(
+        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
+      )
+      const data = await api.json()
+
+      localStorage.setItem('popular', JSON.stringify(data.recipes))
+      setPopular(data.recipes)
+      console.log(data.recipes)
+    }
   }
 
   return (
     <div className='popular'>
+      <h1>Popular</h1>
       <Splide
         options={{
           perPage: 4,
@@ -32,9 +41,10 @@ function Popular() {
       >
         {popular.map((recipe) => (
           <SplideSlide key={recipe.id}>
-            <div className='content' >
+            <div className='content'>
               <p>{recipe.title}</p>
               <img src={recipe.image} alt={recipe.title} />
+              <div className='gradient'></div>
             </div>
           </SplideSlide>
         ))}
