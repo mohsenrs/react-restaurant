@@ -1,27 +1,27 @@
 import { FaPizzaSlice, FaHamburger } from 'react-icons/fa'
 import { GiNoodles, GiChopsticks } from 'react-icons/gi'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import './category.scss'
 
 function Category() {
   return (
     <div className='category'>
-      <Link className='category__item' to={'/cuisine/Italian'}>
+      <NavLink className='category__item' to={'/cuisine/Italian'}>
         <FaPizzaSlice />
         <h4>Italian</h4>
-      </Link>
-      <Link className='category__item' to={'/cuisine/American'}>
+      </NavLink>
+      <NavLink className='category__item' to={'/cuisine/American'}>
         <FaHamburger />
         <h4>American</h4>
-      </Link>
-      <Link className='category__item' to={'/cuisine/Thai'}>
+      </NavLink>
+      <NavLink className='category__item' to={'/cuisine/Thai'}>
         <GiNoodles />
         <h4>Thai</h4>
-      </Link>
-      <Link className='category__item' to={'/cuisine/Japense'}>
+      </NavLink>
+      <NavLink className='category__item' to={'/cuisine/Chinese'}>
         <GiChopsticks />
-        <h4>Japenese</h4>
-      </Link>
+        <h4>Chinese</h4>
+      </NavLink>
     </div>
   )
 }
