@@ -14,7 +14,6 @@ function Cuisine() {
     const recipes = await api.json()
 
     setCuisine(recipes.results)
-    console.log(recipes.results)
   }
 
   useEffect(() => {
@@ -27,8 +26,10 @@ function Cuisine() {
       {cuisine.map((item) => {
         return (
           <div className='card' key={item.id}>
-            <img src={item.image} alt={item.title} />
-            <h4>{item.title}</h4>
+            <Link to={'/recipe/' + item.id}>
+              <img src={item.image} alt={item.title} />
+              <h4>{item.title}</h4>
+            </Link>
           </div>
         )
       })}

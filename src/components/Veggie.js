@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/react-splide/css'
 import './veggie.scss'
+import { Link } from 'react-router-dom'
 
 function Veggie() {
   const [veggie, setVeggie] = useState([])
@@ -37,14 +38,24 @@ function Veggie() {
           drag: 'free',
           gap: '5rem',
           rewind: true,
+          breakpoints: {
+            1080: {
+              perPage: 2,
+            },
+            580: {
+              perPage: 1,
+            },
+          },
         }}
       >
         {veggie.map((recipe) => (
           <SplideSlide key={recipe.id}>
             <div className='content'>
-              <p>{recipe.title}</p>
-              <img src={recipe.image} alt={recipe.title} />
-              <div className='gradient'></div>
+              <Link to={'/recipe/' + recipe.id}>
+                <p>{recipe.title}</p>
+                <img src={recipe.image} alt={recipe.title} />
+                <div className='gradient'></div>
+              </Link>
             </div>
           </SplideSlide>
         ))}
