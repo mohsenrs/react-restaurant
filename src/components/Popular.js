@@ -13,17 +13,13 @@ function Popular() {
   }, [])
 
   const fetchApi = async () => {
-    if (check) {
-      setPopular(JSON.parse(check))
-    } else {
-      const api = await fetch(
-        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
-      )
-      const data = await api.json()
+    const api = await fetch(
+      `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
+    )
+    const data = await api.json()
 
-      setPopular(data.recipes)
-      console.log(data.recipes)
-    }
+    setPopular(data.recipes)
+    console.log(data.recipes)
   }
 
   return (
