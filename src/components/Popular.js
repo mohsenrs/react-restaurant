@@ -3,6 +3,7 @@ import { Splide, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/react-splide/css'
 import './popular.scss'
 import { Link } from 'react-router-dom'
+import food from '../assets/food-tray.png'
 
 function Popular() {
   const [popular, setPopular] = useState([])
@@ -51,7 +52,10 @@ function Popular() {
                 <div className='content'>
                   <Link to={'/recipe/' + recipe.id}>
                     <p>{recipe.title}</p>
-                    <img src={recipe.image} alt={recipe.title} />
+                    <img
+                      src={recipe.image ? recipe.image : food}
+                      alt={recipe.title}
+                    />
                     <div className='gradient'></div>
                   </Link>
                 </div>

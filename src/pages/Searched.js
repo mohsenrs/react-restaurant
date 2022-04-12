@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Loader from '../components/Loader/Loader'
+import food from '../assets/food-tray.png'
 import './searched.scss'
 
 function Searched() {
@@ -33,7 +34,10 @@ function Searched() {
               return (
                 <div className='card' key={item.id}>
                   <Link to={'/recipe/' + item.id}>
-                    <img src={item.image} alt={item.title} />
+                    <img
+                      src={item.image ? item.image : food}
+                      alt={item.title}
+                    />
                     <h4>{item.title}</h4>
                   </Link>
                 </div>

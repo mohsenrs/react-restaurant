@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Link, useParams } from 'react-router-dom'
 import './cuisine.scss'
 import Loader from '../components/Loader/Loader'
+import food from '../assets/food-tray.png'
 
 function Cuisine() {
   const [cuisine, setCuisine] = useState([])
@@ -39,7 +40,10 @@ function Cuisine() {
               return (
                 <div className='card' key={item.id}>
                   <Link to={'/recipe/' + item.id}>
-                    <img src={item.image} alt={item.title} />
+                    <img
+                      src={item.image ? item.image : food}
+                      alt={item.title}
+                    />
                     <h4>{item.title}</h4>
                   </Link>
                 </div>

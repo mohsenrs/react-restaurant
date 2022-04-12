@@ -14,7 +14,6 @@ function Search() {
 
   return (
     <form onSubmit={formSubmitHandler}>
-      {/* <FaSearch /> */}
       <input
         onChange={(e) => {
           setInput(e.target.value)
