@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import Loader from '../components/Loader/Loader'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/react-splide/css'
 import './veggie.scss'
-import { Link } from 'react-router-dom'
 
 function Veggie() {
   const [veggie, setVeggie] = useState([])
@@ -29,38 +30,44 @@ function Veggie() {
   }
 
   return (
-    <div className='veggie'>
-      <h1>Veggie</h1>
-      <Splide
-        options={{
-          perPage: 3,
-          pagination: false,
-          drag: 'free',
-          gap: '5rem',
-          rewind: true,
-          breakpoints: {
-            1080: {
-              perPage: 2,
-            },
-            580: {
-              perPage: 1,
-            },
-          },
-        }}
-      >
-        {veggie.map((recipe) => (
-          <SplideSlide key={recipe.id}>
-            <div className='content'>
-              <Link to={'/recipe/' + recipe.id}>
-                <p>{recipe.title}</p>
-                <img src={recipe.image} alt={recipe.title} />
-                <div className='gradient'></div>
-              </Link>
-            </div>
-          </SplideSlide>
-        ))}
-      </Splide>
-    </div>
+    <>
+      {veggie.length === 0 ? (
+        <Loader />
+      ) : (
+        <div className='veggie'>
+          <h1>Veggie</h1>
+          <Splide
+            options={{
+              perPage: 3,
+              pagination: false,
+              drag: 'free',
+              gap: '5rem',
+              rewind: true,
+              breakpoints: {
+                1080: {
+                  perPage: 2,
+                },
+                580: {
+                  perPage: 1,
+                },
+              },
+            }}
+          >
+            {veggie.map((recipe) => (
+              <SplideSlide key={recipe.id}>
+                <div className='content'>
+                  <Link to={'/recipe/' + recipe.id}>
+                    <p>{recipe.title}</p>
+                    <img src={recipe.image} alt={recipe.title} />
+                    <div className='gradient'></div>
+                  </Link>
+                </div>
+              </SplideSlide>
+            ))}
+          </Splide>
+        </div>
+      )}
+    </>
   )
 }
 

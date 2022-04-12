@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import Loader from '../components/Loader/Loader'
 import './searched.scss'
 
 function Searched() {
@@ -22,17 +23,23 @@ function Searched() {
 
   return (
     <>
-      <h3>Searched: {params.search}</h3>
-      <div className='searched'>
-        {searchedRecipes.map((item) => {
-          return (
-            <div className='card' key={item.id}>
-              <img src={item.image} alt={item.title} />
-              <h4>{item.title}</h4>
-            </div>
-          )
-        })}
-      </div>
+      {searchedRecipes.length === 0 ? (
+        <Loader />
+      ) : (
+        <>
+          <h3>Searched: {params.search}</h3>
+          <div className='searched'>
+            {searchedRecipes.map((item) => {
+              return (
+                <div className='card' key={item.id}>
+                  <img src={item.image} alt={item.title} />
+                  <h4>{item.title}</h4>
+                </div>
+              )
+            })}
+          </div>
+        </>
+      )}
     </>
   )
 }
