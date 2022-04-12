@@ -28,7 +28,13 @@ function Cuisine() {
         <Loader />
       ) : (
         <>
-          <div className='cuisine'>
+          <motion.div
+            className='cuisine'
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             {cuisine.map((item) => {
               return (
                 <div className='card' key={item.id}>
@@ -39,7 +45,7 @@ function Cuisine() {
                 </div>
               )
             })}
-          </div>
+          </motion.div>
         </>
       )}
     </>

@@ -44,6 +44,21 @@ function Recipe() {
             >
               Ingredients
             </button>
+            {activeTab === 'instructions' && (
+              <div className='instructions'>
+                <p dangerouslySetInnerHTML={{ __html: detail.summary }}></p>
+                <p
+                  dangerouslySetInnerHTML={{ __html: detail.instructions }}
+                ></p>
+              </div>
+            )}
+            {activeTab === 'ingredients' && (
+              <ul>
+                {detail.extendedIngredients.map((ingredient) => (
+                  <li key={ingredient.id}>{ingredient.original}</li>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
       )}
