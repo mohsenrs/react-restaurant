@@ -27,47 +27,41 @@ function Popular() {
   }
 
   return (
-    <>
-      {popular.length === 0 ? (
-        <Loader />
-      ) : (
-        <div className='popular'>
-          <h1>Popular</h1>
-          <Splide
-            options={{
-              perPage: 4,
-              pagination: false,
-              drag: 'free',
-              gap: '5rem',
-              rewind: true,
-              breakpoints: {
-                1080: {
-                  perPage: 3,
-                },
-                800: {
-                  perPage: 2,
-                },
-                580: {
-                  perPage: 1,
-                },
-              },
-            }}
-          >
-            {popular.map((recipe) => (
-              <SplideSlide key={recipe.id}>
-                <div className='content'>
-                  <Link to={'/recipe/' + recipe.id}>
-                    <p>{recipe.title}</p>
-                    <img src={recipe.image} alt={recipe.title} />
-                    <div className='gradient'></div>
-                  </Link>
-                </div>
-              </SplideSlide>
-            ))}
-          </Splide>
-        </div>
-      )}
-    </>
+    <div className='popular'>
+      <h1>Popular</h1>
+      <Splide
+        options={{
+          perPage: 4,
+          pagination: false,
+          drag: 'free',
+          gap: '5rem',
+          rewind: true,
+          breakpoints: {
+            1080: {
+              perPage: 3,
+            },
+            800: {
+              perPage: 2,
+            },
+            580: {
+              perPage: 1,
+            },
+          },
+        }}
+      >
+        {popular.map((recipe) => (
+          <SplideSlide key={recipe.id}>
+            <div className='content'>
+              <Link to={'/recipe/' + recipe.id}>
+                <p>{recipe.title}</p>
+                <img src={recipe.image} alt={recipe.title} />
+                <div className='gradient'></div>
+              </Link>
+            </div>
+          </SplideSlide>
+        ))}
+      </Splide>
+    </div>
   )
 }
 
